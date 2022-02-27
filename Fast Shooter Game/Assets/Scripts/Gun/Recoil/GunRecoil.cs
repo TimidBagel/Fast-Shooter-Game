@@ -9,23 +9,29 @@ public class GunRecoil : MonoBehaviour
     public Transform rotationPoint;
 
     [Header("Speed Settings")]
-    public float positionalRecoilSpeed = 8f;
-    public float rotationalRecoilSpeed = 8f;
+    public float positionalRecoilSpeed = 12f;
+    public float rotationalRecoilSpeed = 12f;
 
     public float positionalReturnSpeed = 18f;
-    public float rotationalReturnSpeed = 38f;
+    public float rotationalReturnSpeed = 30f;
 
     [Header("Amount Settings")]
     public Vector3 recoilRotation = new Vector3(10, 5, 7);
-    public Vector3 recoilKickBack = new Vector3(0.015f, 0f, -0.2f);
+    public Vector3 recoilKickBack = new Vector3(0.015f, 0f, -0.1f);
     public Vector3 recoilRotationAim = new Vector3(10, 4, 6);
-    public Vector3 recoilKickBackAim = new Vector3(0.015f, 0f, -0.2f);
+    public Vector3 recoilKickBackAim = new Vector3(0.015f, 0f, 0f);
 
     Vector3 rotationalRecoil;
     Vector3 positionalRecoil;
     Vector3 rot;
 
-    private void FixedUpdate()
+	private void Start()
+	{
+        recoilPosition = GameObject.FindGameObjectWithTag("Weapon Position").transform;
+        rotationPoint = GameObject.FindGameObjectWithTag("Rotation Point").transform;
+	}
+
+	private void FixedUpdate()
     {
         rotationalRecoil = Vector3.Lerp(rotationalRecoil, Vector3.zero, rotationalReturnSpeed * Time.deltaTime);
         positionalRecoil = Vector3.Lerp(positionalRecoil, Vector3.zero, positionalReturnSpeed * Time.deltaTime);

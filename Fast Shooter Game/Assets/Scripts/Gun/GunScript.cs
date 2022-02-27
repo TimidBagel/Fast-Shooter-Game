@@ -7,6 +7,8 @@ public class GunScript : MonoBehaviour
     public Transform gunPosition;
     public Transform otherGunPosition;
 
+    GameManager gameManager;
+
     [Header("Weapon Sway")]
     public float swayAmount = 0.02f;
     public float maxSwayAmount = 0.06f;
@@ -14,7 +16,8 @@ public class GunScript : MonoBehaviour
     private Vector3 initialSwayPosition;
 
     [Header("Weapon Settings")]
-    public float rateOfFire;
+    public Transform WeaponContainer;
+    public Vector3 pointPosition;
     private float timeTillFire;
 
     public float reloadTime;
@@ -27,10 +30,8 @@ public class GunScript : MonoBehaviour
 
     private bool isReloading;
 
-    private bool isAiming;
+    public bool isAiming;
 
-    public int currentAmmo;
-    public int maxAmmo;
     private bool outOfAmmo;
 
     [Header("Bullet Settings")]
@@ -66,6 +67,11 @@ public class GunScript : MonoBehaviour
     public float slideReturnSpeed;
 
     [Header("Aiming Settings")]
+    public bool hasOptic;
+    public Transform Lens;
+    public Vector3 lensTargetPosition;
+    public Vector3 opticAimPosition;
+    public Vector3 redDotAimPosition;
     public Vector3 targetAimPosition;
     public float aimSpeed;
     public float aimReturnSpeed;
@@ -103,16 +109,27 @@ public class GunScript : MonoBehaviour
 
     public bool canFire = true;
 
-    private void Awake()
-    {
-        currentAmmo = maxAmmo;
-
-        muzzleFlashLight.enabled = false;
-    }
+    WeaponUI weaponUI = WeaponUI.weaponUIInstance;
 
     private void Start()
     {
         initialSwayPosition = transform.localPosition;
+
+        WeaponContainer = GameObject.FindGameObjectWithTag("Weapon Container").transform;
+        gunPosition = GameObject.FindGameObjectWithTag("Weapon Holder").transform;
+        otherGunPosition = GameObject.FindGameObjectWithTag("Second Weapon Holder").transform;
+
+        gunRecoilScript = GetComponent<GunRecoil>();
+        cameraRecoilScript = GetComponentInParent<CameraRecoil>();
+
+        shootAudioSource = GetComponent<AudioSource>();
+
+        gameManager = GameManager.gameManagerInstance;
+
+        prefabs.bulletPrefab = gameManager.BigBulletPrefab;
+        prefabs.casingPrefab = gameManager.BigCasingPrefab;
+
+        soundClips.shootSound = gameManager.shootAudioClip;
     }
 
     private void LateUpdate()
@@ -121,86 +138,82 @@ public class GunScript : MonoBehaviour
         float movementY = -Input.GetAxis("Mouse Y") * swayAmount;
         movementX = Mathf.Clamp(movementX, -maxSwayAmount, maxSwayAmount);
         movementY = Mathf.Clamp(movementY, -maxSwayAmount, maxSwayAmount);
-        Vector3 finalSwayPosition = new Vector3(movementX, movementY, 0);
-        otherGunPosition.localPosition = Vector3.Lerp(otherGunPosition.localPosition, 
-            finalSwayPosition + initialSwayPosition,  Time.deltaTime * swaySmoothValue);
+        Vector3 finalSwayPosition = new Vector3 (movementX, movementY, 0);
+        otherGunPosition.localPosition = Vector3.Lerp(otherGunPosition.localPosition,
+            finalSwayPosition + initialSwayPosition, Time.deltaTime * swaySmoothValue);
     }
 
     private void Update()
     {
+        WeaponContainer.localPosition = pointPosition;
+
         if (Input.GetButton("Fire2") && !isReloading)
         {
             Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, aimFov, fovSpeed * Time.deltaTime);
             isAiming = true;
 
-            if (gunPosition.localPosition != targetAimPosition)
-                gunPosition.localPosition = Vector3.Lerp(gunPosition.localPosition, 
-                    targetAimPosition, aimSpeed * Time.deltaTime);
+            if (!hasOptic)
+            {
+                if (gunPosition.localPosition != targetAimPosition)
+                    gunPosition.localPosition = Vector3.Lerp(gunPosition.localPosition,
+                      targetAimPosition, aimSpeed * Time.deltaTime);
+            }
+            else
+			{
+                gunPosition.localPosition = Vector3.Lerp(gunPosition.localPosition,
+                    redDotAimPosition, aimSpeed * Time.deltaTime);
+                if ( Lens != null && Lens.localPosition != lensTargetPosition)
+                    Lens.localPosition = Vector3.Lerp(Lens.localPosition,
+                        lensTargetPosition, aimSpeed * Time.deltaTime);
+            }
         }
         else
         {
             Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, defaultFov, fovSpeed * Time.deltaTime);
-            gunPosition.localPosition = Vector3.Lerp(gunPosition.localPosition, 
+            gunPosition.localPosition = Vector3.Lerp(gunPosition.localPosition,
                 Vector3.zero, aimReturnSpeed * Time.deltaTime);
+            if (Lens != null)
+                Lens.localPosition = Vector3.Lerp(Lens.localPosition,
+                    Vector3.zero, aimSpeed * Time.deltaTime);
 
             isAiming = false;
         }
 
-        if (currentAmmo == 0)
-            outOfAmmo = true;
-        else
-            outOfAmmo = false;
+        if (slidePosition != null && slidePosition.localPosition != Vector3.zero)
+            slidePosition.localPosition = Vector3.Lerp(slidePosition.localPosition,
+                Vector3.zero, slideReturnSpeed * Time.deltaTime);
 
-        if (Input.GetButton("Fire1") && !outOfAmmo && Time.time >= timeTillFire && canFire)
-        {
-            currentAmmo -= 1;
-
-            Debug.Log("Got here");
-
-            timeTillFire = Time.time + 1f / rateOfFire;
-
-            shootAudioSource.clip = soundClips.shootSound;
-            shootAudioSource.Play();
-
-            muzzleParticles.Emit(1);
-            sparkParticles.Emit(Random.Range(1, 6));
-
-            StartCoroutine(MuzzleFlashLight());
-
-            var bullet = (Transform)Instantiate(prefabs.bulletPrefab,
-                spawnPoints.bulletSpawnPoint.transform.position,
-                spawnPoints.bulletSpawnPoint.transform.rotation);
-
-            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletForce;
-
-            Instantiate(prefabs.casingPrefab, 
-                spawnPoints.casingSpawnPoint.transform.position,
-                spawnPoints.casingSpawnPoint.transform.rotation);
-
-            cameraRecoilScript.RecoilFire();
-            gunRecoilScript.RecoilFire(isAiming);
-        }
-
-        if (Input.GetKeyDown(KeyCode.R) && canReload)
-            StartCoroutine(Reload(false));
+        //if (Input.GetKeyDown(KeyCode.R) && canReload)
+        //    StartCoroutine(Reload(false));
     }
-    private IEnumerator MuzzleFlashLight()
+    public IEnumerator MuzzleFlashLight()
     {
         muzzleFlashLight.enabled = true;
         yield return new WaitForSeconds(lightDuration);
         muzzleFlashLight.enabled = false;
     }
 
-    private IEnumerator Reload(bool empty)
-    {
-        canFire = false;
-        canReload = false;
+  //  private IEnumerator Reload(bool empty)
+  //  {
+  //      Weapon weapon = EquipmentManager.equipmentManager.equippedWeapon;
+  //      if (weapon.magazineCount <= 0)
+		//{
+  //          Debug.Log("No more magazines");
+  //          yield return new WaitForSeconds(0);
+		//}
+		//else
+		//{
+  //          canFire = false;
+  //          canReload = false;
 
-        // some reload thing
+  //          // some reload thing
 
-        yield return new WaitForSeconds(reloadTime);
-        currentAmmo = maxAmmo;
-        canReload = true;
-        canFire = true;
-    }
+  //          yield return new WaitForSeconds(reloadTime);
+  //          weapon.currentAmmo = weapon.maxAmmo;
+  //          weapon.magazineCount -= 1;
+  //          weaponUI.UpdateAmmoOnly(weapon.currentAmmo, weapon.magazineCount);
+  //          canReload = true;
+  //          canFire = true;
+  //      }
+  //  }
 }

@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     public float groundCheckDistance = 0.4f;
     public LayerMask groundMask;
 
+    //public GameObject weapon1;
+    //public GameObject weapon2;
+    //public GameObject weapon3;
+
     private void Start()
     {
         playerCamera = Camera.main.GetComponent<CameraLook>();
@@ -29,6 +33,33 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        #region for testing
+  //      if (Input.GetKeyDown(KeyCode.Alpha1))
+		//{
+  //          weapon1.SetActive(true);
+  //          weapon2.SetActive(false);
+  //          weapon3.SetActive(false);
+		//}
+  //      if (Input.GetKeyDown(KeyCode.Alpha2))
+		//{
+  //          weapon1.SetActive(false);
+  //          weapon2.SetActive(true);
+  //          weapon3.SetActive(false);
+		//}
+  //      if (Input.GetKeyDown(KeyCode.Alpha3))
+		//{
+  //          weapon1.SetActive(false);
+  //          weapon2.SetActive(false);
+  //          weapon3.SetActive(true);
+		//}
+  //      if (Input.GetKeyDown(KeyCode.H) && weapon1.activeSelf)
+  //          weapon1.SetActive(false);
+  //      if (Input.GetKeyDown(KeyCode.H) && weapon2.activeSelf)
+  //          weapon2.SetActive(false);
+  //      if (Input.GetKeyDown(KeyCode.H) && weapon3.activeSelf)
+  //          weapon3.SetActive(false);
+        #endregion
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
@@ -65,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = transform.right * xMovement + transform.forward * zMovement;
 
-        controller.Move(movement.normalized * playerSpeed * Time.deltaTime);
+        controller.Move(movement * playerSpeed * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
