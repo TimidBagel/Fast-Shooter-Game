@@ -128,8 +128,6 @@ public class GunScript : MonoBehaviour
 
         prefabs.bulletPrefab = gameManager.BigBulletPrefab;
         prefabs.casingPrefab = gameManager.BigCasingPrefab;
-
-        soundClips.shootSound = gameManager.shootAudioClip;
     }
 
     private void LateUpdate()

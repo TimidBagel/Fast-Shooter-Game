@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa3e3597755bf643a4d2847b3184355, type: 3}
+  m_Name: Anti Material Rifle
+  m_EditorClassIdentifier: 
+  name: Anti Material Rifle
+  description: A hefty sniper rifle designed for the destruction of terrain and the
+    desolation of armored targets
+  type: Weapon
+  icon: {fileID: 21300000, guid: 71f1ec4054de0724fa435476b09fbbd3, type: 3}
+  iconSize: {x: 130, y: 45}
+  prefab: {fileID: 4580672960722384743, guid: 109a2c3f1b1e6854982d9cb9c0b01f30, type: 3}
+  bulletForce: 1000
+  weaponType: 4
+  weaponStyle: 0
+  fireMode: SINGLE FIRE
+  fullAutoCapable: 0
+  rateOfFire: 0
