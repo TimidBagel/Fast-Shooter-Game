@@ -15,7 +15,7 @@ public class GunScript : MonoBehaviour
     public float swaySmoothValue = 4.0f;
     private Vector3 initialSwayPosition;
 
-    [Header("Weapon Settings")]
+	[Header("Weapon Settings")]
     public Transform WeaponContainer;
     public Vector3 pointPosition;
     private float timeTillFire;
@@ -55,10 +55,6 @@ public class GunScript : MonoBehaviour
     public Light muzzleFlashLight;
     public float lightDuration = 0.02f;
 
-    [Header("Audio Source")]
-    public AudioSource mainAudioSource;
-    public AudioSource shootAudioSource;
-
     public Transform slidePosition;
 
     [Header("Slide Settings")]
@@ -97,13 +93,6 @@ public class GunScript : MonoBehaviour
     }
     public SpawnPoints spawnPoints;
 
-    [System.Serializable]
-    public class SoundClips
-    {
-        public AudioClip shootSound;
-    }
-    public SoundClips soundClips;
-
     public CameraRecoil cameraRecoilScript;
     public GunRecoil gunRecoilScript;
 
@@ -121,8 +110,6 @@ public class GunScript : MonoBehaviour
 
         gunRecoilScript = GetComponent<GunRecoil>();
         cameraRecoilScript = GetComponentInParent<CameraRecoil>();
-
-        shootAudioSource = GetComponent<AudioSource>();
 
         gameManager = GameManager.gameManagerInstance;
 

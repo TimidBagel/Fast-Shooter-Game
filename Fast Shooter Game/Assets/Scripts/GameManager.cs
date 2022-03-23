@@ -22,4 +22,14 @@ public class GameManager : MonoBehaviour
 	public Transform BigBulletPrefab;
 	public Transform BigCasingPrefab;
 	public AudioClip shootAudioClip; // make support for more sound effects later please :)
+
+	[System.Serializable]
+	public class AudioClips
+	{
+		public AudioManager.Sound sound;
+		public AudioClip audioClip;
+		public float volume;
+	}
+	public AudioClips audioClips;
+	public AudioClips[] sounds;
 }

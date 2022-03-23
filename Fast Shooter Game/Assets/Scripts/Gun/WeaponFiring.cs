@@ -9,6 +9,8 @@ public class WeaponFiring : MonoBehaviour
     WeaponUI weaponUI = WeaponUI.weaponUIInstance;
     GunScript gunScript;
 
+	public AudioManager.Sound fireSound;
+
     public int magazineCapacity;
     public int magazineCarryingCapacity; // change this to be based on equipment
     public int currentLoadedMagazine;
@@ -70,8 +72,7 @@ public class WeaponFiring : MonoBehaviour
 
         timeTillFire = Time.time + 1f / weapon.rateOfFire;
 
-        gunScript.shootAudioSource.clip = gunScript.soundClips.shootSound;
-        gunScript.shootAudioSource.Play();
+		AudioManager.PlaySound(fireSound, false);
 
         gunScript.muzzleParticles.Emit(1);
         gunScript.sparkParticles.Emit(Random.Range(1, 6));

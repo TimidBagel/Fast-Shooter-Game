@@ -232,7 +232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9190172570275381405
 Transform:
   m_ObjectHideFlags: 0
@@ -1273,6 +1273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f932b0c9b2d688446a06152f97bae3e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireSound: 1
   magazineCapacity: 30
   magazineCarryingCapacity: 4
   currentLoadedMagazine: 0
@@ -1334,8 +1335,6 @@ MonoBehaviour:
   maxSparkEmission: 7
   muzzleFlashLight: {fileID: 899660718644313165}
   lightDuration: 0.02
-  mainAudioSource: {fileID: 0}
-  shootAudioSource: {fileID: 0}
   slidePosition: {fileID: 0}
   targetSlidePosition: {x: 0, y: 0, z: 0}
   slideTravelSpeed: 0
@@ -1357,8 +1356,6 @@ MonoBehaviour:
   spawnPoints:
     bulletSpawnPoint: {fileID: 5505392127700046317}
     casingSpawnPoint: {fileID: 6202189355271236877}
-  soundClips:
-    shootSound: {fileID: 8300000, guid: ffdf95d53528bb6429b5bfb6eefcd54a, type: 3}
   cameraRecoilScript: {fileID: 0}
   gunRecoilScript: {fileID: 0}
   canFire: 1
@@ -1373,7 +1370,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1760,6 +1757,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EOTECH red dot
       objectReference: {fileID: 0}
+    - target: {fileID: 8186391174866156237, guid: ed18766ca6372f344a52dd1d84125be9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed18766ca6372f344a52dd1d84125be9, type: 3}
 --- !u!4 &4127566990736779891 stripped
@@ -1904,6 +1905,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Muzzleflash Particles
       objectReference: {fileID: 0}
+    - target: {fileID: 6742123783934789030, guid: c030e4c540ebd924b825367374db47aa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6868914373082634624, guid: c030e4c540ebd924b825367374db47aa, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1942,6 +1947,10 @@ PrefabInstance:
     - target: {fileID: 8350883482521367265, guid: 96c406a60db554b4c806ed408af97f20, type: 3}
       propertyPath: m_Name
       value: SparkParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350883482521367265, guid: 96c406a60db554b4c806ed408af97f20, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8354992382080289457, guid: 96c406a60db554b4c806ed408af97f20, type: 3}
       propertyPath: m_RootOrder
@@ -2020,7 +2029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1372797526029282, guid: e1c460556c0f9cd488c40e1e6eb49def, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4641414253881882, guid: e1c460556c0f9cd488c40e1e6eb49def, type: 3}
       propertyPath: m_RootOrder
