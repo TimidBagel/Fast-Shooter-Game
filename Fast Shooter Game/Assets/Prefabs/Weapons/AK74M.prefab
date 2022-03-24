@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f932b0c9b2d688446a06152f97bae3e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireSound: 0
   magazineCapacity: 30
   magazineCarryingCapacity: 4
   currentLoadedMagazine: 0
@@ -207,10 +208,8 @@ MonoBehaviour:
   sparkParticles: {fileID: 2014384973763916830}
   minSparkEmission: 1
   maxSparkEmission: 7
-  muzzleFlashLight: {fileID: 0}
+  muzzleFlashLight: {fileID: 8049550011607012213}
   lightDuration: 0.02
-  mainAudioSource: {fileID: 7697900929580151493}
-  shootAudioSource: {fileID: 7697900929580151494}
   slidePosition: {fileID: 7693624079036356132}
   targetSlidePosition: {x: 0, y: 0, z: 0.0839}
   slideTravelSpeed: 10
@@ -232,8 +231,6 @@ MonoBehaviour:
   spawnPoints:
     bulletSpawnPoint: {fileID: 7697900930689848969}
     casingSpawnPoint: {fileID: 7697900929265937321}
-  soundClips:
-    shootSound: {fileID: 8300000, guid: bd150dccc2902da43876c1a0c5cfcd5c, type: 3}
   cameraRecoilScript: {fileID: 0}
   gunRecoilScript: {fileID: 7697900929580151495}
   canFire: 1
@@ -801,6 +798,11 @@ PrefabInstance:
 --- !u!4 &2616522509925323374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6988186059333653016, guid: 6642643dc7c6b7a489487b1777b30df4, type: 3}
+  m_PrefabInstance: {fileID: 4950801166519943286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &8049550011607012213 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3098890477136581379, guid: 6642643dc7c6b7a489487b1777b30df4, type: 3}
   m_PrefabInstance: {fileID: 4950801166519943286}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7697900928739948589

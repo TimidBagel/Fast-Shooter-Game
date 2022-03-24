@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyAfter: 10
-  fleshDamage: 30
+  fleshDamage: 50
   destroyOnImpact: 0
   trailEnabletimer: 0.1
   metalImpactPrefabs: []

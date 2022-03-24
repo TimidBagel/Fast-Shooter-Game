@@ -12,6 +12,8 @@ TagManager:
   - Weapon Container
   - Weapon Holder
   - Second Weapon Holder
+  - Weapons
+  - Enemy
   layers:
   - Default
   - TransparentFX

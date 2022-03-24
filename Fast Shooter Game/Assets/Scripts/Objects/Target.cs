@@ -5,7 +5,10 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public Animator anim;
-    public float healthPoints;
+	public float healthPoints;
+	public ParticleSystem bloodParticleSystem;
+	public GameObject bloodParticles;
+	bool dead = false;
 
 	private void Start()
 	{
@@ -14,10 +17,17 @@ public class Target : MonoBehaviour
 
 	public void TakeDamage(float damage)
     {
+		if (dead)
+			return;
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
-            Destroy(gameObject);
+			Die();
         }
     }
+
+	public virtual void Die()
+	{
+		// behaviour for death in here, can be overriden
+	}
 }

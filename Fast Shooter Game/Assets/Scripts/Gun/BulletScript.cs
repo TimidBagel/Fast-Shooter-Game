@@ -26,7 +26,11 @@ namespace Assets.Scripts
             Debug.Log("Collided with " + collision.transform.name);
             Target target = collision.transform.GetComponent<Target>();
             if (target != null && collision.transform.tag == "Target")
-                target.TakeDamage(fleshDamage);
+			{
+				target.TakeDamage(fleshDamage);
+				//GameObject particles = Instantiate(target.bloodParticles, transform.position, Quaternion.identity);
+				//Destroy(particles, target.bloodParticleSystem.main.duration); // for blood particles
+			}
             else if (target != null && collision.transform.tag == "Standing Target")
                 target.anim.SetTrigger("Target Hit");
             Destroy(gameObject);

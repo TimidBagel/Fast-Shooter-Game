@@ -315,10 +315,8 @@ MonoBehaviour:
   sparkParticles: {fileID: 1623742214988989336}
   minSparkEmission: 1
   maxSparkEmission: 7
-  muzzleFlashLight: {fileID: 0}
+  muzzleFlashLight: {fileID: 2627837463455391747}
   lightDuration: 0.02
-  mainAudioSource: {fileID: 0}
-  shootAudioSource: {fileID: 0}
   slidePosition: {fileID: 3427662267819140879}
   targetSlidePosition: {x: 0, y: 0, z: 1.69}
   slideTravelSpeed: 10
@@ -340,8 +338,6 @@ MonoBehaviour:
   spawnPoints:
     bulletSpawnPoint: {fileID: 8965461965639949703}
     casingSpawnPoint: {fileID: 3144573084411406041}
-  soundClips:
-    shootSound: {fileID: 0}
   cameraRecoilScript: {fileID: 0}
   gunRecoilScript: {fileID: 0}
   canFire: 1
@@ -379,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f932b0c9b2d688446a06152f97bae3e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireSound: 0
   magazineCapacity: 30
   magazineCarryingCapacity: 3
   currentLoadedMagazine: 0
@@ -3342,6 +3339,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6988186059333653016, guid: 6642643dc7c6b7a489487b1777b30df4, type: 3}
   m_PrefabInstance: {fileID: 1114232131831853824}
   m_PrefabAsset: {fileID: 0}
+--- !u!108 &2627837463455391747 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3098890477136581379, guid: 6642643dc7c6b7a489487b1777b30df4, type: 3}
+  m_PrefabInstance: {fileID: 1114232131831853824}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2147359511064071209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3510,14 +3512,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96c406a60db554b4c806ed408af97f20, type: 3}
---- !u!4 &1466675759109145882 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8354992382080289457, guid: 96c406a60db554b4c806ed408af97f20, type: 3}
-  m_PrefabInstance: {fileID: 7469299812762718123}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &1623742214988989336 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8151788459819043891, guid: 96c406a60db554b4c806ed408af97f20, type: 3}
+  m_PrefabInstance: {fileID: 7469299812762718123}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1466675759109145882 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8354992382080289457, guid: 96c406a60db554b4c806ed408af97f20, type: 3}
   m_PrefabInstance: {fileID: 7469299812762718123}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9094063332707162435
