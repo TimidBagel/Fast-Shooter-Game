@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daa3e3597755bf643a4d2847b3184355, type: 3}
-  m_Name: M4A1
+  m_Name: USP45
   m_EditorClassIdentifier: 
-  name: M4A1
-  description: A factory issue automatic 5.56x45 dispenser
+  name: USP45
+  description: 'A .45 gun. very nice. '
   type: Weapon
-  icon: {fileID: 21300000, guid: 71f1ec4054de0724fa435476b09fbbd3, type: 3}
+  icon: {fileID: 21300000, guid: 0d7a6d1f956e18046987f5cc6db09e56, type: 3}
   iconSize: {x: 130, y: 45}
-  prefab: {fileID: 5513850640355062715, guid: 171e0c9ea1d89d74ab435bfd11c62e2e, type: 3}
-  bulletForce: 600
-  weaponType: 2
-  weaponStyle: 0
+  prefab: {fileID: 6260306787832834379, guid: 4a04f5c2db8bd1243bacfec9c7a27f4a, type: 3}
+  bulletForce: 400
+  weaponType: 1
+  weaponStyle: 1
   fireMode: SINGLE FIRE
-  fullAutoCapable: 1
-  rateOfFire: 14
+  fullAutoCapable: 0
+  rateOfFire: 0

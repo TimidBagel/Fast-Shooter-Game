@@ -613,13 +613,14 @@ GameObject:
   - component: {fileID: 4727767568347309017}
   - component: {fileID: 8585129694671645096}
   - component: {fileID: 9103172624364745361}
+  - component: {fileID: -1811109770424159389}
   m_Layer: 0
   m_Name: USP45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6749421905206211569
 Transform:
   m_ObjectHideFlags: 0
@@ -698,7 +699,7 @@ MonoBehaviour:
   muzzleFlashLight: {fileID: 599066453666948667}
   lightDuration: 0.02
   slidePosition: {fileID: 7452271637974679540}
-  targetSlidePosition: {x: 0, y: 0.043082204, z: -0.1158}
+  targetSlidePosition: {x: 0, y: 0, z: -0.045}
   slideTravelSpeed: 10
   slideReturnSpeed: 10
   hasOptic: 0
@@ -707,9 +708,9 @@ MonoBehaviour:
   opticAimPosition: {x: 0, y: 0, z: 0}
   redDotAimPosition: {x: 0, y: 0, z: 0}
   targetAimPosition: {x: -0.1507, y: 0.0952, z: -0.0222}
-  aimSpeed: 8
-  aimReturnSpeed: 10
-  aimFov: 40
+  aimSpeed: 10
+  aimReturnSpeed: 12
+  aimFov: 50
   defaultFov: 60
   fovSpeed: 10
   prefabs:
@@ -739,10 +740,29 @@ MonoBehaviour:
   rotationalRecoilSpeed: 12
   positionalReturnSpeed: 18
   rotationalReturnSpeed: 30
-  recoilRotation: {x: 30, y: 5, z: 7}
-  recoilKickBack: {x: 0.015, y: 0, z: -0.2}
-  recoilRotationAim: {x: 30, y: 4, z: 6}
-  recoilKickBackAim: {x: 0.015, y: 0, z: -0.2}
+  recoilRotation: {x: 50, y: 5, z: 7}
+  recoilKickBack: {x: 0.015, y: 0, z: -0.1}
+  recoilRotationAim: {x: 50, y: 4, z: 6}
+  recoilKickBackAim: {x: 0.015, y: 0, z: -0.5}
+--- !u!95 &-1811109770424159389
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6260306787832834379}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6836761696984600119
 GameObject:
   m_ObjectHideFlags: 0

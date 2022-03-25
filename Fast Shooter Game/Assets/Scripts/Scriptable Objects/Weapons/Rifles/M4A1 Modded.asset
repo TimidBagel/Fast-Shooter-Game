@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daa3e3597755bf643a4d2847b3184355, type: 3}
-  m_Name: AKM Modded
+  m_Name: M4A1 Modded
   m_EditorClassIdentifier: 
-  name: AKM Modded
-  description: A modded AKM, a controversial setup indeed...
+  name: M4A1 Modded
+  description: A well modded automatic 5.56x45 dispenser
   type: Weapon
-  icon: {fileID: 21300000, guid: 0d7a6d1f956e18046987f5cc6db09e56, type: 3}
+  icon: {fileID: 21300000, guid: 71f1ec4054de0724fa435476b09fbbd3, type: 3}
   iconSize: {x: 130, y: 45}
-  prefab: {fileID: 1146022984768686827, guid: 64e41e5f5dd4f3e43a9648e8171bd574, type: 3}
-  bulletForce: 500
+  prefab: {fileID: 4390171824154055516, guid: 488465b577311bc43997f9a3135eb449, type: 3}
+  bulletForce: 700
   weaponType: 2
   weaponStyle: 0
-  fireMode: SINGLE FIRE
+  fireMode: FULL AUTO
   fullAutoCapable: 1
-  rateOfFire: 10
+  rateOfFire: 14

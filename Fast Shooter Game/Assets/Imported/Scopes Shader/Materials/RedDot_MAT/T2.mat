@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RedDotTex:
-        m_Texture: {fileID: 2800000, guid: ca4bf7249965c6547ab8fbeb05678ea7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1c7a988d7c7da1c48b567b3c8fc49b61, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ReticleTex:

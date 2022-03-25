@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daa3e3597755bf643a4d2847b3184355, type: 3}
-  m_Name: M4A1 Modded
+  m_Name: MK16
   m_EditorClassIdentifier: 
-  name: M4A1 Modded
-  description: A well modded automatic 5.56x45 dispenser
+  name: MK16
+  description: The "SCAR", an automatic 5.56x45 rifle carbine
   type: Weapon
   icon: {fileID: 21300000, guid: 71f1ec4054de0724fa435476b09fbbd3, type: 3}
   iconSize: {x: 130, y: 45}
-  prefab: {fileID: 4390171824154055516, guid: 488465b577311bc43997f9a3135eb449, type: 3}
-  bulletForce: 600
+  prefab: {fileID: 7190705818014132801, guid: 0ae81f321ab21a943ac74c92976e38fc, type: 3}
+  bulletForce: 800
   weaponType: 2
   weaponStyle: 0
-  fireMode: SINGLE FIRE
+  fireMode: FULL AUTO
   fullAutoCapable: 1
-  rateOfFire: 14
+  rateOfFire: 10.416667

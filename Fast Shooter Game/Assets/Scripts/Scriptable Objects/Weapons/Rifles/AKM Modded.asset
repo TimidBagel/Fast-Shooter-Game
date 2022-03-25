@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa3e3597755bf643a4d2847b3184355, type: 3}
+  m_Name: AKM Modded
+  m_EditorClassIdentifier: 
+  name: AKM Modded
+  description: A modded AKM, a controversial setup indeed...
+  type: Weapon
+  icon: {fileID: 21300000, guid: 0d7a6d1f956e18046987f5cc6db09e56, type: 3}
+  iconSize: {x: 130, y: 45}
+  prefab: {fileID: 1146022984768686827, guid: 64e41e5f5dd4f3e43a9648e8171bd574, type: 3}
+  bulletForce: 600
+  weaponType: 2
+  weaponStyle: 0
+  fireMode: SINGLE FIRE
+  fullAutoCapable: 1
+  rateOfFire: 10
